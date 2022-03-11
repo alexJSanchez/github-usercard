@@ -5,14 +5,14 @@ import axios from "axios";
     https://api.github.com/users/<your name>
 */
 axios.get('https://api.github.com/users/alexJSanchez')
-.then(res => {
-  document.querySelector('img')
- console.log(res.data)
+.then(resp => {
+  document.querySelector('.card').appendChild(cardMaker(resp.data));
+ console.log(resp.data)
 })
-.catch()
-.finally()
+.catch(err => {console.log('error')})
 
-/*
+
+/*                      
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
     data in order to use it to build your component function
@@ -38,7 +38,7 @@ axios.get('https://api.github.com/users/alexJSanchez')
 
 const followersArray = [];
 
-function cardMaker(){
+function cardMaker(data){
   let card = document.createElement('div');
   card.className = "card";
   let cardImg = document.createElement('img');
